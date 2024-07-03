@@ -1,0 +1,7 @@
+#  this way this configue as a template ready for when I need to use it in a project that does 
+# involve copying files from the host to the containe, so the current files need to be ignored in the build context
+
+# ignore Dockerfile
+Dockerfile
+# Ignore all files starting with docker-compose
+docker-compose*

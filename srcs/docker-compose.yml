@@ -1,0 +1,42 @@
+# Specifies the version of the Docker Compose file format.
+version: '3'
+
+#Defines the services to be run.
+services:
+  nginx: # The name of the service.
+    container_name: nginx
+    image: nginx
+    build:  # this key specifies the build instructions.
+      context: ./requirements/nginx # The build context (directory containing the Dockerfile).
+      dockerfile: Dockerfile  # The name of the Dockerfile, optional if 
+    ports: 
+      - "443:443"  # Maps port 443 on the host to port 443 in the container.
+    # env_file:
+      # - ./.env
+    # command: ["nginx", "-g", "daemon off;"]
+    restart: always
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    ports:
+      - "3300:3306"
+    # restart: always
+    # env_file:
+      # - fileName
+#anonymous volume. this line mounts the mariadb-datadir directory from the underlying host system 
+# as /var/lib/mysql inside the container, where MariaDB by default will write its data files.
+    volumes:
+      -  mariadb-datadir:/var/lib/mysql
+
+
+  # wordpress:
+ 
+
+
+# creates volume called mariadb-volume
+volumes:
+  mariadb-datadir:

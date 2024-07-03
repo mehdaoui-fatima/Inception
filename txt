@@ -1,9 +1,0 @@
-buildng an image under the name of nginx using -t option, 
-followed by the dir of the dockerfile: here is "." the working dir: docker run -d  -p 8080:80 nginx
-
-running a container from nginx image build : dßocker run -d  -p 8080:80 nginx
-
-
-
-
-give the absolute path when trying to copy files from your working dir to your container
